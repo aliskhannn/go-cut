@@ -1,0 +1,3 @@
+x:y
+no_delimiter_line
+p:q
