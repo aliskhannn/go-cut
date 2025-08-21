@@ -54,6 +54,14 @@ func TestCut_Integration(t *testing.T) {
 		}
 	})
 
+	t.Run("fields range", func(t *testing.T) {
+		out := runCmd(t, bin, "", "-f", "2-4", "-d", ":", tmpFile)
+		expected := "b:c:d\nf:g:h\nj:k:l\n"
+		if out != expected {
+			t.Fatalf("got %q, want %q", out, expected)
+		}
+	})
+
 	t.Run("separated only", func(t *testing.T) {
 		tmpFile2 := filepath.Join(t.TempDir(), "testfile2.txt")
 		content2 := "x:y\nno_delimiter_line\np:q"

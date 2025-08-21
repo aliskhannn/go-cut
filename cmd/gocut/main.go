@@ -22,8 +22,14 @@ func main() {
 		os.Exit(1)
 	}
 
+	fields, err := cut.ParseFieldArg(*flags.Fields)
+	if err != nil {
+		_, _ = fmt.Fprintln(os.Stderr, "Invalid fields:", err)
+		os.Exit(1)
+	}
+
 	cfg := cut.Config{
-		Fields:    *flags.Fields,
+		Fields:    fields,
 		Delimiter: *flags.Delimiter,
 		Separated: *flags.Separated,
 	}

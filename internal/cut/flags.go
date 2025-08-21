@@ -4,7 +4,7 @@ import "github.com/spf13/pflag"
 
 // Flags holds the command line flags for the cut command.
 type Flags struct {
-	Fields    *[]int
+	Fields    *string
 	Delimiter *string
 	Separated *bool
 }
@@ -12,7 +12,7 @@ type Flags struct {
 // InitFlags initializes the command line flags for the cut command.
 func InitFlags() Flags {
 	return Flags{
-		Fields:    pflag.IntSliceP("fields", "f", nil, "List of fields to output (1-based index)."),
+		Fields:    pflag.StringP("fields", "f", "", "List of fields to output (1-based index)."),
 		Delimiter: pflag.StringP("delimiter", "d", "\t", "Field delimiter"),
 		Separated: pflag.BoolP("separated", "s", false, "Output fields separated by the delimiter."),
 	}
